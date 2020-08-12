@@ -1,0 +1,11 @@
+FROM app-go:latest as builder
+WORKDIR /src/sum_go
+RUN go build -ldflags "-w" sum.go
+RUN ls -lh
+RUN pwd
+RUN which sum
+
+FROM scratch
+WORKDIR /app
+COPY --from=builder /src/sum_go/sum .
+ENTRYPOINT ["./sum"]

@@ -1,5 +1,5 @@
 substitutions:
-    _APP_VERSION: '1.0'
+    _APP_VERSION: '1.1'
 steps:
     - id: 'Criando a imagem com código fonte'
       name: 'gcr.io/cloud-builders/docker'
@@ -8,6 +8,14 @@ steps:
     - id: 'Executando os testes'
       name: 'gcr.io/cloud-builders/docker'
       args: ['run', '--rm', '-t', 'gcr.io/$PROJECT_ID/app-sum-go:latest', 'go', 'test']
+
+    - id: 'Criando executável do app GO'
+      name: 'gcr.io/cloud-builders/docker'
+      args: ['build', '-t', 'app-go', '-f', 'Dockerfile.prod', '.']
+
+    - id: 'Executando a app GO'
+      name: 'gcr.io/cloud-builders/docker'
+      args: ['run', '--rm', 'app-go']
 
 images: 
     - 'gcr.io/$PROJECT_ID/app-sum-go:latest'
