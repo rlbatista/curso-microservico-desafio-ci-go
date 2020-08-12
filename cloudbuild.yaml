@@ -3,7 +3,7 @@ substitutions:
 steps:
     - id: 'Criando a imagem com código fonte'
       name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t', 'gcr.io/$PROJECT_ID/app-sum-go:latest', '-t', 'gcr.io/$PROJECT_ID/app-sum-go:${_APP_VERSION}']
+      args: ['build', '-t', 'gcr.io/$PROJECT_ID/app-sum-go:latest', '-t', 'gcr.io/$PROJECT_ID/app-sum-go:${_APP_VERSION}', '.']
       
     - id: 'Executando os testes'
       name: 'gcr.io/cloud-builders/docker'
