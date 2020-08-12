@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func Soma(x, y int) int {
-    return 0;
+    return x + y;
 }
 
 func main() {
