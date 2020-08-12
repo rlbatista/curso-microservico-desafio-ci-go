@@ -1,5 +1,5 @@
 substitutions:
-    _APP_VERSION: 1.0
+    _APP_VERSION: '1.0'
 steps:
     - id: 'Criando a imagem com código fonte'
       name: 'gcr.io/cloud-builders/docker'
