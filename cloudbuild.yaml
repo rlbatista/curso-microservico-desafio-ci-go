@@ -11,7 +11,7 @@ steps:
 
     - id: 'Criando executável do app GO'
       name: 'gcr.io/cloud-builders/docker'
-      args: ['build', '-t', 'app-go', '-f', 'Dockerfile.prod', '.']
+      args: ['build', '-t', 'app-go', '--build-arg', '_IMAGE_NAME=gcr.io/$PROJECT_ID/app-sum-go', '-f', 'Dockerfile.prod', '.']
 
     - id: 'Executando a app GO'
       name: 'gcr.io/cloud-builders/docker'

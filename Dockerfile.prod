@@ -1,4 +1,6 @@
-FROM app-go:latest as builder
+ARG _IMAGE_NAME
+
+FROM ${_IMAGE_NAME} as builder
 WORKDIR /src/sum_go
 RUN go build -ldflags "-w" sum.go
 RUN ls -lh
